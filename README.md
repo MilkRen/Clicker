@@ -53,4 +53,4 @@ static extern void mouse_event(uint dwFlags, int dx, int dy, uint dwData, int dw
 Using KeyboardHooks. Found on youtube!
 To register clicks on the background!
 
-## Social: [![](https://img.shields.io/badge/YouTube-090909??style=for-the-badge&logo=youtube&logoColor=FF0000)](https://www.youtube.com/channel/UCB_7Js6N4JMTnhu9gshcZQw) [![](https://img.shields.io/badge/telegram-090909??style=for-the-badge&logo=telegram&)](https://t.me/MilkRen)
+## Social: [![](https://img.shields.io/badge/YouTube-090909??style=for-the-badge&logo=youtube&logoColor=FF0000)](https://www.youtube.com/) [![](https://img.shields.io/badge/telegram-090909??style=for-the-badge&logo=telegram&)](https://t.me/MilkRen)
