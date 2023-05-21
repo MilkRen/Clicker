@@ -47,6 +47,10 @@
             this.panelMainFormCopy = new System.Windows.Forms.Panel();
             this.panelMainFormCopy_2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxStopKey = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxStartKey = new System.Windows.Forms.TextBox();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +58,7 @@
             // 
             this.labelMouseXY.AutoSize = true;
             this.labelMouseXY.Font = new System.Drawing.Font("Cascadia Mono", 13.8F);
+            this.labelMouseXY.ForeColor = System.Drawing.Color.White;
             this.labelMouseXY.Location = new System.Drawing.Point(169, 72);
             this.labelMouseXY.Name = "labelMouseXY";
             this.labelMouseXY.Size = new System.Drawing.Size(52, 30);
@@ -114,26 +119,32 @@
             // 
             this.labelClick.AutoSize = true;
             this.labelClick.Font = new System.Drawing.Font("Cascadia Mono", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelClick.Location = new System.Drawing.Point(12, 20);
+            this.labelClick.ForeColor = System.Drawing.Color.White;
+            this.labelClick.Location = new System.Drawing.Point(25, 25);
+            this.labelClick.MaximumSize = new System.Drawing.Size(104, 30);
             this.labelClick.Name = "labelClick";
-            this.labelClick.Size = new System.Drawing.Size(130, 30);
+            this.labelClick.Size = new System.Drawing.Size(104, 30);
             this.labelClick.TabIndex = 5;
-            this.labelClick.Text = "Click ---";
+            this.labelClick.Text = "Click -";
             // 
             // buttonDetector
             // 
+            this.buttonDetector.BackColor = System.Drawing.Color.Transparent;
+            this.buttonDetector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDetector.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonDetector.Location = new System.Drawing.Point(161, 10);
+            this.buttonDetector.ForeColor = System.Drawing.Color.White;
+            this.buttonDetector.Location = new System.Drawing.Point(151, 16);
             this.buttonDetector.Name = "buttonDetector";
             this.buttonDetector.Size = new System.Drawing.Size(70, 50);
             this.buttonDetector.TabIndex = 4;
             this.buttonDetector.Text = "Off";
-            this.buttonDetector.UseVisualStyleBackColor = true;
+            this.buttonDetector.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cascadia Mono", 13.8F);
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(12, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 30);
@@ -144,6 +155,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Cascadia Mono", 13.8F);
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(12, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 30);
@@ -161,6 +173,7 @@
             // 
             this.labelKeyboardHook.AutoSize = true;
             this.labelKeyboardHook.Font = new System.Drawing.Font("Cascadia Mono", 13.8F);
+            this.labelKeyboardHook.ForeColor = System.Drawing.Color.White;
             this.labelKeyboardHook.Location = new System.Drawing.Point(169, 112);
             this.labelKeyboardHook.Name = "labelKeyboardHook";
             this.labelKeyboardHook.Size = new System.Drawing.Size(26, 30);
@@ -171,6 +184,7 @@
             // 
             this.labelPositionMouseX.AutoSize = true;
             this.labelPositionMouseX.Font = new System.Drawing.Font("Cascadia Mono", 13.8F);
+            this.labelPositionMouseX.ForeColor = System.Drawing.Color.White;
             this.labelPositionMouseX.Location = new System.Drawing.Point(12, 160);
             this.labelPositionMouseX.Name = "labelPositionMouseX";
             this.labelPositionMouseX.Size = new System.Drawing.Size(195, 30);
@@ -181,6 +195,7 @@
             // 
             this.labelPositionMouseY.AutoSize = true;
             this.labelPositionMouseY.Font = new System.Drawing.Font("Cascadia Mono", 13.8F);
+            this.labelPositionMouseY.ForeColor = System.Drawing.Color.White;
             this.labelPositionMouseY.Location = new System.Drawing.Point(12, 199);
             this.labelPositionMouseY.Name = "labelPositionMouseY";
             this.labelPositionMouseY.Size = new System.Drawing.Size(195, 30);
@@ -198,6 +213,7 @@
             // 
             this.labelTimeClick.AutoSize = true;
             this.labelTimeClick.Font = new System.Drawing.Font("Cascadia Mono", 13.8F);
+            this.labelTimeClick.ForeColor = System.Drawing.Color.White;
             this.labelTimeClick.Location = new System.Drawing.Point(12, 237);
             this.labelTimeClick.Name = "labelTimeClick";
             this.labelTimeClick.Size = new System.Drawing.Size(130, 30);
@@ -239,16 +255,58 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cascadia Mono", 13.8F);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(341, 147);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 120);
             this.label1.TabIndex = 18;
             this.label1.Text = "s\r\na\r\nv\r\ne";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Cascadia Mono", 13.8F);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(12, 314);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 30);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "StopKey";
+            // 
+            // textBoxStopKey
+            // 
+            this.textBoxStopKey.Location = new System.Drawing.Point(235, 314);
+            this.textBoxStopKey.Name = "textBoxStopKey";
+            this.textBoxStopKey.Size = new System.Drawing.Size(100, 22);
+            this.textBoxStopKey.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Cascadia Mono", 13.8F);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(12, 276);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(117, 30);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "StartKey";
+            // 
+            // textBoxStartKey
+            // 
+            this.textBoxStartKey.Location = new System.Drawing.Point(235, 276);
+            this.textBoxStartKey.Name = "textBoxStartKey";
+            this.textBoxStartKey.Size = new System.Drawing.Size(100, 22);
+            this.textBoxStartKey.TabIndex = 19;
+            // 
             // FormAdvanced
             // 
-            this.ClientSize = new System.Drawing.Size(373, 282);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.ClientSize = new System.Drawing.Size(373, 368);
             this.ContextMenuStrip = this.contextMenuStrip;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBoxStopKey);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBoxStartKey);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelMainFormCopy_2);
             this.Controls.Add(this.panelMainFormCopy);
@@ -306,5 +364,9 @@
         private System.Windows.Forms.Panel panelMainFormCopy;
         private System.Windows.Forms.Panel panelMainFormCopy_2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxStopKey;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxStartKey;
     }
 }

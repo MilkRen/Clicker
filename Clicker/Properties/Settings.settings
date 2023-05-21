@@ -17,5 +17,11 @@
     <Setting Name="Defbool" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="KeyStart" Type="System.String" Scope="User">
+      <Value Profile="(Default)">J</Value>
+    </Setting>
+    <Setting Name="KeyStop" Type="System.String" Scope="User">
+      <Value Profile="(Default)">T</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

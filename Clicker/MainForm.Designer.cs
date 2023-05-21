@@ -45,7 +45,9 @@
             // 
             // buttonDetector
             // 
+            this.buttonDetector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDetector.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonDetector.ForeColor = System.Drawing.Color.White;
             this.buttonDetector.Location = new System.Drawing.Point(170, 15);
             this.buttonDetector.Name = "buttonDetector";
             this.buttonDetector.Size = new System.Drawing.Size(70, 50);
@@ -56,12 +58,14 @@
             // labelClick
             // 
             this.labelClick.AutoSize = true;
-            this.labelClick.Font = new System.Drawing.Font("Cascadia Mono", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelClick.Location = new System.Drawing.Point(21, 25);
+            this.labelClick.Font = new System.Drawing.Font("Cascadia Mono", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelClick.ForeColor = System.Drawing.Color.White;
+            this.labelClick.Location = new System.Drawing.Point(12, 31);
+            this.labelClick.MaximumSize = new System.Drawing.Size(150, 22);
             this.labelClick.Name = "labelClick";
-            this.labelClick.Size = new System.Drawing.Size(130, 30);
+            this.labelClick.Size = new System.Drawing.Size(140, 22);
             this.labelClick.TabIndex = 1;
-            this.labelClick.Text = "Click ---";
+            this.labelClick.Text = "Click -100ms-";
             // 
             // notifyIcon
             // 
@@ -117,6 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(258, 80);
             this.ContextMenuStrip = this.contextMenuStrip;
             this.Controls.Add(this.labelClick);
@@ -130,6 +135,7 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             this.MouseEnter += new System.EventHandler(this.MainForm_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.MainForm_MouseLeave);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

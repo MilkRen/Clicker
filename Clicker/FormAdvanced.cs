@@ -21,6 +21,19 @@ namespace Clicker
         static int MX = 0;
         static int MY = 0;
 
+        // border form
+        private const int WS_BORDER = 0x00800000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= WS_BORDER;
+                cp.ExStyle &= (~0x00000200); // Удаляем стиль WS_EX_CLIENTEDGE
+                return cp;
+            }
+        }
+
         public FormAdvanced()
         {
             TopMost = true;
@@ -31,6 +44,8 @@ namespace Clicker
             textBoxPositionMouseX.Text = Properties.Settings.Default.MouseX.ToString();
             textBoxPositionMouseY.Text = Properties.Settings.Default.MouseY.ToString();
             textBoxTimeClick.Text = Properties.Settings.Default.TimeClick.ToString();
+            textBoxStartKey.Text = Properties.Settings.Default.KeyStart.ToString();
+            textBoxStopKey.Text = Properties.Settings.Default.KeyStop.ToString();
 
             //keyboard hook
             Hooks.KBDHook.KeyDown += new Hooks.KBDHook.HookKeyPress(KBDHook_KeyDown);
@@ -40,10 +55,11 @@ namespace Clicker
             //button
             buttonDetector.Click += (s, e) =>
             {
+                SaveSettings();
                 if (buttonDetector.Text == "Off")
                 {
                     timer.Start();
-                    buttonDetector.BackColor = Color.Red;
+                    buttonDetector.BackColor = Color.DarkRed;
                     buttonDetector.Text = "On";
                 }
                 else
@@ -54,28 +70,10 @@ namespace Clicker
                 }
             };
 
-            buttonDetector.MouseEnter += (s, e) =>
-            {
-                timer.Stop();
-            };
-
-            //label
-            labelClick.MouseEnter += (s, e) =>
-            {
-                labelClick.Enabled = false;
-            };
-
-            labelClick.MouseLeave += async (s, e) =>
-            {
-                await Task.Delay(3000);
-                labelClick.Enabled = true;
-            };
-
+            buttonDetector.MouseEnter += (s, e) => { timer.Stop(); };
+      
             //panel move
-            panelMouseMove.MouseEnter += (s, e) =>
-            {
-                panelMouseMove.Enabled = false;
-            };
+            panelMouseMove.MouseEnter += (s, e) => { panelMouseMove.Enabled = false; };
 
             panelMouseMove.MouseLeave += async (s, e) =>
             {
@@ -98,22 +96,20 @@ namespace Clicker
             //notufiio - contextMenuStrip
             closingToolStripMenuItem.Click += (s, e) =>
             {
-                Properties.Settings.Default.MouseX = int.Parse(textBoxPositionMouseX.Text);
-                Properties.Settings.Default.MouseY = int.Parse(textBoxPositionMouseY.Text);
-                Properties.Settings.Default.TimeClick = int.Parse(textBoxTimeClick.Text);
-                Properties.Settings.Default.Save();
-                this.Close();
+                SaveSettings();
+                Application.Exit();
             };
 
             defaultToolStripMenuItem.Click += (s, e) =>
             {
+                SaveSettings();
                 Properties.Settings.Default.Mode = "Default";
                 Properties.Settings.Default.Save();
 
-                MainForm mainform = new MainForm();
                 timer.Stop();
                 Hide();
 
+                MainForm mainform = new MainForm();
                 mainform.Show(this);
                 mainform.Location = new Point(Properties.Settings.Default.MouseX, Properties.Settings.Default.MouseY);
             };
@@ -134,7 +130,7 @@ namespace Clicker
                 Properties.Settings.Default.TimeClick = 150;
                 Properties.Settings.Default.Save();
                 MessageBox.Show("restart application!");
-                Close();
+                Application.Exit();
             };
 
             contextMenuStrip.MouseEnter += (s, e) =>
@@ -161,17 +157,16 @@ namespace Clicker
 
         void KBDHook_KeyDown(Hooks.LLKHEventArgs e) // keyboard hook
         {
-            int a = 0;
-            if (e.Keys.ToString() == "T")
+            if (e.Keys.ToString() == Properties.Settings.Default.KeyStop.ToString())
             {
                 timer.Stop();
                 buttonDetector.BackColor = Color.Empty;
                 buttonDetector.Text = "Off";
             }
-            else if (e.Keys.ToString() == "J")
+            else if (e.Keys.ToString() == Properties.Settings.Default.KeyStart.ToString())
             {
                 timer.Start();
-                buttonDetector.BackColor = Color.Red;
+                buttonDetector.BackColor = Color.DarkRed;
                 buttonDetector.Text = "On";
             }
             if (e.Keys.ToString() == "Oemplus")
@@ -182,6 +177,15 @@ namespace Clicker
             labelKeyboardHook.Text = e.Keys.ToString();
         }
 
+        void SaveSettings()
+        {
+            Properties.Settings.Default.MouseX = int.Parse(textBoxPositionMouseX.Text);
+            Properties.Settings.Default.MouseY = int.Parse(textBoxPositionMouseY.Text);
+            Properties.Settings.Default.TimeClick = int.Parse(textBoxTimeClick.Text);
+            Properties.Settings.Default.KeyStart = textBoxStartKey.Text.ToUpper();
+            Properties.Settings.Default.KeyStop = textBoxStopKey.Text.ToUpper();
+            Properties.Settings.Default.Save();
+        }
 
         // mouse hook
         private void Subcsride(IKeyboardMouseEvents events) 
@@ -221,10 +225,7 @@ namespace Clicker
 
         private void FormAdvanced_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Properties.Settings.Default.MouseX = int.Parse(textBoxPositionMouseX.Text);
-            Properties.Settings.Default.MouseY = int.Parse(textBoxPositionMouseY.Text);
-            Properties.Settings.Default.TimeClick = int.Parse(textBoxTimeClick.Text);
-            Properties.Settings.Default.Save();
+            SaveSettings();
             Application.Exit();
         }
 
@@ -239,6 +240,7 @@ namespace Clicker
                 timer.Start();
         }
 
+  
      
     }
 }
