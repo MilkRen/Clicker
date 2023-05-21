@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Gma.System.MouseKeyHook;
 using System.Threading;
+using Color = System.Drawing.Color;
 
 namespace Clicker
 {
@@ -35,6 +36,7 @@ namespace Clicker
         }
 
         int tc = Properties.Settings.Default.TimeClick; // timeClick
+
         public FormAdvanced()
         {
             TopMost = true;
@@ -71,7 +73,8 @@ namespace Clicker
                 }
             };
 
-            buttonDetector.MouseEnter += (s, e) => { timer.Stop(); };
+            buttonDetector.MouseEnter += (s, e) => { timer.Stop(); buttonDetector.BackColor = ColorTranslator.FromHtml("#666666"); };
+            buttonDetector.MouseLeave += (s, e) => {  buttonDetector.BackColor = Color.Transparent; };
       
             //panel move
             panelMouseMove.MouseEnter += (s, e) => { panelMouseMove.Enabled = false; };
@@ -96,7 +99,7 @@ namespace Clicker
                 panelMouseMove_3.Enabled = true;
             };
 
-            //notufiio - contextMenuStrip
+            //notifyIcon - contextMenuStrip
             closingToolStripMenuItem.Click += (s, e) =>
             {
                 SaveSettings();

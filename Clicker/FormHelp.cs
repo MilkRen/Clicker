@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace Clicker
 {
@@ -52,6 +53,12 @@ namespace Clicker
                     labelTitle.Text = "This is the standard size";
                 }
             };
+
+            buttonRUS.MouseEnter += (s, e) => { buttonRUS.BackColor = ColorTranslator.FromHtml("#666666"); };
+            buttonRUS.MouseLeave += (s, e) => { buttonRUS.BackColor = Color.Transparent; };
+
+            buttonENG.MouseEnter += (s, e) => { buttonENG.BackColor = ColorTranslator.FromHtml("#666666"); };
+            buttonENG.MouseLeave += (s, e) => { buttonENG.BackColor = Color.Transparent; };
 
         }
 

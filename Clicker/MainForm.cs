@@ -59,8 +59,9 @@ namespace Clicker
                     buttonDetector.Text = "Off";
                 }
             };
-           
-            buttonDetector.MouseEnter += (s, e) => { timer.Stop(); };
+
+            buttonDetector.MouseEnter += (s, e) => { timer.Stop(); buttonDetector.BackColor = ColorTranslator.FromHtml("#666666"); };
+            buttonDetector.MouseLeave += (s, e) => { buttonDetector.BackColor = Color.Transparent; };
 
             //label
             labelClick.MouseEnter += (s, e) => { labelClick.Enabled = false; };
@@ -70,8 +71,8 @@ namespace Clicker
                 await Task.Delay(3000);
                 labelClick.Enabled = true;
             };
-           
-            //notufiio - contextMenuStrip
+
+            //notifyIcon - contextMenuStrip
             closingToolStripMenuItem.Click += (s, e) => { Application.Exit(); };
      
             advancedToolStripMenuItem.Click += (s, e) =>

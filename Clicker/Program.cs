@@ -25,9 +25,9 @@ namespace Clicker
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                FormAdvanced S = new FormAdvanced();
-                S.Show();
-                S.Location = new Point(Properties.Settings.Default.MouseX, Properties.Settings.Default.MouseY);
+                FormAdvanced FA = new FormAdvanced();
+                FA.Show();
+                FA.Location = new Point(Properties.Settings.Default.MouseX, Properties.Settings.Default.MouseY);
                 Application.Run();
 
             }
@@ -36,9 +36,9 @@ namespace Clicker
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                MainForm S = new MainForm();
-                S.Show();
-                S.Location = new Point(Properties.Settings.Default.MouseX, Properties.Settings.Default.MouseY);
+                MainForm MF = new MainForm();
+                MF.Show();
+                MF.Location = new Point(Properties.Settings.Default.MouseX, Properties.Settings.Default.MouseY);
                 Application.Run();
             }
         }
