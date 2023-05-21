@@ -17,6 +17,6 @@
 
 ## Остальное 
 
-В приложении активно используются мышиные и клавиатурные хуки, а также функции уведомлений Windows. Скачивайте, тестируйте и оставляйте отзывы — готов ответить на любые вопросы!
+В приложении активно используются мышиные и клавиатурные хуки, а также функции уведомлений Windows. Скачивайте, тестируйте и оставляйте отзывы!
 
 ## Social: [![](https://img.shields.io/badge/YouTube-090909??style=for-the-badge&logo=youtube&logoColor=FF0000)](https://www.youtube.com/) [![](https://img.shields.io/badge/telegram-090909??style=for-the-badge&logo=telegram&)](https://t.me/MilkRen)
