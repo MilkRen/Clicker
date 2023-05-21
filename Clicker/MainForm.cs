@@ -34,7 +34,7 @@ namespace Clicker
             TopMost = true;
             InitializeComponent();
 
-            labelClick.Text = $"Click -{Properties.Settings.Default.TimeClick.ToString()}ms- ";
+            labelClick.Text = $"Click {Properties.Settings.Default.TimeClick.ToString()}ms ";
 
             int tc = Properties.Settings.Default.TimeClick; // timeClick
             

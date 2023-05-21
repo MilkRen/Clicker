@@ -13,35 +13,46 @@ namespace Clicker
             labelStateName.Text = Properties.Settings.Default.Mode;
 
             if ("Default" == labelStateName.Text)
-                pictureBox.Image = Properties.Resources.def1;
-
-            if ("Advanced" == labelStateName.Text)
-                pictureBox.Image = Properties.Resources.adv1;
+            {
+                pictureBox.Visible = false;
+                labelTitle.Text = $"Клавиша старт: {Properties.Settings.Default.KeyStart}\n";
+                labelTitle.Text += $"Клавиша стоп: {Properties.Settings.Default.KeyStop}\n ";
+                labelTitle.Text += $"Cкорость: {Properties.Settings.Default.TimeClick}мс";
+            }
+            else if ("Advanced" == labelStateName.Text)
+            {
+                labelTitle.Text = "Это размер стандартной формы";
+            }
 
             buttonRUS.Click += (s, e) =>
             {
                 if ("Default" == labelStateName.Text)
-                     pictureBox.Image = Properties.Resources.def2;
+                {
+                    labelTitle.Text = $"Клавиша старт: {Properties.Settings.Default.KeyStart}\n";
+                    labelTitle.Text += $"Клавиша стоп: {Properties.Settings.Default.KeyStop}\n ";
+                    labelTitle.Text += $"Cкорость клика: {Properties.Settings.Default.TimeClick}мс";
+                }
+                else if ("Advanced" == labelStateName.Text)
+                {
+                    labelTitle.Text = "Это размер стандартной формы";
+                }
             };
 
             buttonENG.Click += (s, e) =>
             {
                 if ("Default" == labelStateName.Text)
-                    pictureBox.Image = Properties.Resources.def1;
+                {
+                    pictureBox.Visible = false;
+                    labelTitle.Text = $"Start key: {Properties.Settings.Default.KeyStart}\n";
+                    labelTitle.Text += $"Stop key: {Properties.Settings.Default.KeyStop}\n ";
+                    labelTitle.Text += $"Speed click: {Properties.Settings.Default.TimeClick}ms";
+                }
+                else if ("Advanced" == labelStateName.Text)
+                {
+                    labelTitle.Text = "This is the standard size";
+                }
             };
 
-
-            buttonRUS.Click += (s, e) =>
-            {
-                if ("Advanced" == labelStateName.Text)
-                    pictureBox.Image = Properties.Resources.adv2;
-            };
-
-            buttonENG.Click += (s, e) =>
-            {
-                if ("Advanced" == labelStateName.Text)
-                    pictureBox.Image = Properties.Resources.adv1;
-            };
         }
 
        

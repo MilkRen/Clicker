@@ -34,12 +34,12 @@ namespace Clicker
             }
         }
 
+        int tc = Properties.Settings.Default.TimeClick; // timeClick
         public FormAdvanced()
         {
             TopMost = true;
             InitializeComponent();
 
-            int tc = Properties.Settings.Default.TimeClick; // timeClick
 
             textBoxPositionMouseX.Text = Properties.Settings.Default.MouseX.ToString();
             textBoxPositionMouseY.Text = Properties.Settings.Default.MouseY.ToString();
@@ -56,6 +56,7 @@ namespace Clicker
             buttonDetector.Click += (s, e) =>
             {
                 SaveSettings();
+                tc = int.Parse(textBoxTimeClick.Text);
                 if (buttonDetector.Text == "Off")
                 {
                     timer.Start();
@@ -74,6 +75,8 @@ namespace Clicker
       
             //panel move
             panelMouseMove.MouseEnter += (s, e) => { panelMouseMove.Enabled = false; };
+            panelMouseMove_2.MouseEnter += (s, e) => { panelMouseMove.Enabled = false; };
+            panelMouseMove_3.MouseEnter += (s, e) => { panelMouseMove.Enabled = false; };
 
             panelMouseMove.MouseLeave += async (s, e) =>
             {
@@ -82,15 +85,15 @@ namespace Clicker
             };
 
             //panel copy MainForm move
-            panelMainFormCopy.MouseEnter += (s, e) =>
+            panelMouseMove_3.MouseEnter += (s, e) =>
             {
-                panelMainFormCopy.Enabled = false;
+                panelMouseMove_3.Enabled = false;
             };
 
-            panelMainFormCopy.MouseLeave += async (s, e) =>
+            panelMouseMove_3.MouseLeave += async (s, e) =>
             {
                 await Task.Delay(3000);
-                panelMainFormCopy.Enabled = true;
+                panelMouseMove_3.Enabled = true;
             };
 
             //notufiio - contextMenuStrip
@@ -157,13 +160,14 @@ namespace Clicker
 
         void KBDHook_KeyDown(Hooks.LLKHEventArgs e) // keyboard hook
         {
-            if (e.Keys.ToString() == Properties.Settings.Default.KeyStop.ToString())
+            tc = int.Parse(textBoxTimeClick.Text);
+            if (e.Keys.ToString() == textBoxStopKey.Text.ToString().ToUpper())
             {
                 timer.Stop();
                 buttonDetector.BackColor = Color.Empty;
                 buttonDetector.Text = "Off";
             }
-            else if (e.Keys.ToString() == Properties.Settings.Default.KeyStart.ToString())
+            else if (e.Keys.ToString() == textBoxStartKey.Text.ToString().ToUpper())
             {
                 timer.Start();
                 buttonDetector.BackColor = Color.DarkRed;

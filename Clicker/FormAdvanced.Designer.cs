@@ -44,8 +44,8 @@
             this.labelTimeClick = new System.Windows.Forms.Label();
             this.textBoxTimeClick = new System.Windows.Forms.TextBox();
             this.panelMouseMove = new System.Windows.Forms.Panel();
-            this.panelMainFormCopy = new System.Windows.Forms.Panel();
-            this.panelMainFormCopy_2 = new System.Windows.Forms.Panel();
+            this.panelMouseMove_3 = new System.Windows.Forms.Panel();
+            this.panelMouseMove_2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxStopKey = new System.Windows.Forms.TextBox();
@@ -229,34 +229,34 @@
             // 
             // panelMouseMove
             // 
-            this.panelMouseMove.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelMouseMove.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panelMouseMove.Location = new System.Drawing.Point(0, 0);
             this.panelMouseMove.Name = "panelMouseMove";
             this.panelMouseMove.Size = new System.Drawing.Size(25, 25);
             this.panelMouseMove.TabIndex = 15;
             // 
-            // panelMainFormCopy
+            // panelMouseMove_3
             // 
-            this.panelMainFormCopy.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panelMainFormCopy.Location = new System.Drawing.Point(0, 0);
-            this.panelMainFormCopy.Name = "panelMainFormCopy";
-            this.panelMainFormCopy.Size = new System.Drawing.Size(10, 80);
-            this.panelMainFormCopy.TabIndex = 16;
+            this.panelMouseMove_3.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panelMouseMove_3.Location = new System.Drawing.Point(0, 0);
+            this.panelMouseMove_3.Name = "panelMouseMove_3";
+            this.panelMouseMove_3.Size = new System.Drawing.Size(10, 80);
+            this.panelMouseMove_3.TabIndex = 16;
             // 
-            // panelMainFormCopy_2
+            // panelMouseMove_2
             // 
-            this.panelMainFormCopy_2.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panelMainFormCopy_2.Location = new System.Drawing.Point(0, 0);
-            this.panelMainFormCopy_2.Name = "panelMainFormCopy_2";
-            this.panelMainFormCopy_2.Size = new System.Drawing.Size(258, 10);
-            this.panelMainFormCopy_2.TabIndex = 17;
+            this.panelMouseMove_2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panelMouseMove_2.Location = new System.Drawing.Point(0, 0);
+            this.panelMouseMove_2.Name = "panelMouseMove_2";
+            this.panelMouseMove_2.Size = new System.Drawing.Size(258, 10);
+            this.panelMouseMove_2.TabIndex = 17;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cascadia Mono", 13.8F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(341, 147);
+            this.label1.Location = new System.Drawing.Point(341, 186);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 120);
             this.label1.TabIndex = 18;
@@ -276,6 +276,7 @@
             // textBoxStopKey
             // 
             this.textBoxStopKey.Location = new System.Drawing.Point(235, 314);
+            this.textBoxStopKey.MaxLength = 1;
             this.textBoxStopKey.Name = "textBoxStopKey";
             this.textBoxStopKey.Size = new System.Drawing.Size(100, 22);
             this.textBoxStopKey.TabIndex = 21;
@@ -294,6 +295,7 @@
             // textBoxStartKey
             // 
             this.textBoxStartKey.Location = new System.Drawing.Point(235, 276);
+            this.textBoxStartKey.MaxLength = 1;
             this.textBoxStartKey.Name = "textBoxStartKey";
             this.textBoxStartKey.Size = new System.Drawing.Size(100, 22);
             this.textBoxStartKey.TabIndex = 19;
@@ -308,8 +310,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxStartKey);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelMainFormCopy_2);
-            this.Controls.Add(this.panelMainFormCopy);
+            this.Controls.Add(this.panelMouseMove_2);
+            this.Controls.Add(this.panelMouseMove_3);
             this.Controls.Add(this.panelMouseMove);
             this.Controls.Add(this.labelTimeClick);
             this.Controls.Add(this.textBoxTimeClick);
@@ -361,8 +363,8 @@
         private System.Windows.Forms.Label labelTimeClick;
         private System.Windows.Forms.TextBox textBoxTimeClick;
         private System.Windows.Forms.Panel panelMouseMove;
-        private System.Windows.Forms.Panel panelMainFormCopy;
-        private System.Windows.Forms.Panel panelMainFormCopy_2;
+        private System.Windows.Forms.Panel panelMouseMove_3;
+        private System.Windows.Forms.Panel panelMouseMove_2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxStopKey;
