@@ -1,56 +1,22 @@
-# Clicker
-### <p align="center"> The clicker has two modes - Default, Adbanced </p>
-##   <p align="center"> Default </p>
 <p align="center">
-<img src="https://raw.githubusercontent.com/MilkRen/Clicker/master/img_github/Screenshot1.png"></p>
+<img src="https://github.com/MilkRen/Clicker/blob/master/img_github/logo.png?raw=true"></p>
 
-##   <p align="center"> Adbanced </p>
-<p align="center">
-<img src="https://raw.githubusercontent.com/MilkRen/Clicker/master/img_github/Screenshot3.png"></p>
-
-# Context menu
-<p align="center">
-<img src="https://raw.githubusercontent.com/MilkRen/Clicker/master/img_github/Screenshot2.png"></p>
+##   <p align="center"> Обычный кликер </p>
+Кликер предлагает два режима: Default и Advanced. В режиме Default вы сможете начать кликать сразу же, без лишних настроек. А если вам нужна большая гибкость и индивидуальные настройки, режим Advanced предоставит вам возможность настроить каждую деталь по своему вкусу.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/MilkRen/Clicker/master/img_github/Screenshot6.png"></p>
+<img src="https://github.com/MilkRen/Clicker/blob/master/img_github/programm.png?raw=true"></p>
 
-Inset "Window" - mode switching
+## Контекстное меню
+Приложение предлагает контекстное меню, доступное через правый клик мыши. В нём вы сможете легко переключать режимы, выйти из приложения, получить справку и многое другое.
 
-Inset "Closing" - close program 
 
-Inset "Help" - open Help Form
-
-Inset "Reset" - standard settings
-
-#  FormHelp 
 <p align="center">
-<img src="https://raw.githubusercontent.com/MilkRen/Clicker/master/img_github/Screenshot4.png" height=400></p>
-<p align="center">
-<img src="https://raw.githubusercontent.com/MilkRen/Clicker/master/img_github/Screenshot5.png" height=400></p>
+<img src="https://github.com/MilkRen/Clicker/blob/master/img_github/ScreenTwo.png?raw=true"></p>
 
-# Framework
 
-##   <p align="center"> Mouse </p>
+## Остальное 
 
-<img src="https://raw.githubusercontent.com/MilkRen/Clicker/master/img_github/Screenshot7.png" ></p>
-
-Using MouseHooks to track mouse clicks.
-
-This is necessary for the best placement of program when launch
-
-```
-[DllImport("user32.dll", SetLastError = true)]
-public static extern bool SetCursorPos(int X, int Y);
-private IKeyboardMouseEvents m_Events;
-
-[DllImport("user32.dll")]
-static extern void mouse_event(uint dwFlags, int dx, int dy, uint dwData, int dwExtraInfo);
-```
-"user32.dll" to simulate mouse clicks
-
-##   <p align="center"> Keyboard </p>
-Using KeyboardHooks. Found on youtube!
-To register clicks on the background!
+В приложении активно используются мышиные и клавиатурные хуки, а также функции уведомлений Windows. Скачивайте, тестируйте и оставляйте отзывы — готов ответить на любые вопросы!
 
 ## Social: [![](https://img.shields.io/badge/YouTube-090909??style=for-the-badge&logo=youtube&logoColor=FF0000)](https://www.youtube.com/) [![](https://img.shields.io/badge/telegram-090909??style=for-the-badge&logo=telegram&)](https://t.me/MilkRen)
