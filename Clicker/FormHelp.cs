@@ -22,7 +22,8 @@ namespace Clicker
             }
             else if ("Advanced" == labelStateName.Text)
             {
-                labelTitle.Text = "Это размер стандартной формы";
+                labelTitle.Text = "Это размер стандартной формы\n";
+                labelTitle.Text += $"Клавиша \"+\", сохраняет позицию приложения в точке, где находится курсор мыши";
             }
 
             buttonRUS.Click += (s, e) =>
@@ -50,7 +51,8 @@ namespace Clicker
                 }
                 else if ("Advanced" == labelStateName.Text)
                 {
-                    labelTitle.Text = "This is the standard size";
+                    labelTitle.Text = "This is the standard size\n";
+                    labelTitle.Text += $"The key combination \"+\", saves the position of the application at the point where the mouse cursor is located";
                 }
             };
 

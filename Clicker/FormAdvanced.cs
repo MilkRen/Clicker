@@ -235,6 +235,11 @@ namespace Clicker
             SaveSettings();
             Application.Exit();
         }
+        private void FormAdvanced_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveSettings();
+            Application.Exit();
+        }
 
         private void FormAdvanced_MouseEnter(object sender, EventArgs e)
         {
@@ -247,7 +252,6 @@ namespace Clicker
                 timer.Start();
         }
 
-  
-     
+        
     }
 }

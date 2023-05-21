@@ -321,6 +321,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAdvanced";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAdvanced_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAdvanced_FormClosed);
             this.Load += new System.EventHandler(this.FormAdvanced_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormAdvanced_MouseDown);
