@@ -6,11 +6,15 @@ using System.Runtime.InteropServices;
 using Gma.System.MouseKeyHook;
 using System.Threading;
 using Color = System.Drawing.Color;
+using System.Drawing.Printing;
+using System.Text.RegularExpressions;
 
 namespace Clicker
 {
     public partial class FormAdvanced: Form
     {
+        #region dll
+
         [DllImport("user32.dll", SetLastError = true)]
         public static extern bool SetCursorPos(int X, int Y);
         private IKeyboardMouseEvents m_Events;
@@ -35,13 +39,20 @@ namespace Clicker
             }
         }
 
-        int tc = Properties.Settings.Default.TimeClick; // timeClick
+        #endregion
+
+        #region fields
+
+        int timeClick = Properties.Settings.Default.TimeClick;
+
+        #endregion
+
+        #region ctor
 
         public FormAdvanced()
-        {
-            TopMost = true;
+        {  
             InitializeComponent();
-
+            TopMost = true;
 
             textBoxPositionMouseX.Text = Properties.Settings.Default.MouseX.ToString();
             textBoxPositionMouseY.Text = Properties.Settings.Default.MouseY.ToString();
@@ -58,41 +69,49 @@ namespace Clicker
             buttonDetector.Click += (s, e) =>
             {
                 SaveSettings();
-                tc = int.Parse(textBoxTimeClick.Text);
+                timeClick = int.Parse(textBoxTimeClick.Text);
                 if (buttonDetector.Text == "Off")
                 {
-                    timer.Start();
-                    buttonDetector.BackColor = Color.DarkRed;
-                    buttonDetector.Text = "On";
+                    buttonDetector.Enabled = false;
+                    ButtonOn();
                 }
                 else
-                {
-                    timer.Stop();
-                    buttonDetector.BackColor = Color.Empty;
-                    buttonDetector.Text = "Off";
-                }
+                    ButtonOff();
             };
-
-            buttonDetector.MouseEnter += (s, e) => { timer.Stop(); buttonDetector.BackColor = ColorTranslator.FromHtml("#666666"); };
-            buttonDetector.MouseLeave += (s, e) => {  buttonDetector.BackColor = Color.Transparent; };
+            buttonDetector.MouseEnter += (s, e) => 
+            { 
+                timer.Stop(); 
+            };
+            buttonDetector.MouseLeave += (s, e) => 
+            {
+                buttonDetector.Enabled = true;
+                if (buttonDetector.Text == "Off")
+                    buttonDetector.BackColor = Color.Transparent;
+            };
       
             //panel move
-            panelMouseMove.MouseEnter += (s, e) => { panelMouseMove.Enabled = false; };
-            panelMouseMove_2.MouseEnter += (s, e) => { panelMouseMove.Enabled = false; };
-            panelMouseMove_3.MouseEnter += (s, e) => { panelMouseMove.Enabled = false; };
-
+            panelMouseMove.MouseEnter += (s, e) => 
+            { 
+                panelMouseMove.Enabled = false; 
+            };
+            panelMouseMove_2.MouseEnter += (s, e) => 
+            { 
+                panelMouseMove.Enabled = false; 
+            };
+            panelMouseMove_3.MouseEnter += (s, e) => 
+            { 
+                panelMouseMove.Enabled = false; 
+            };
             panelMouseMove.MouseLeave += async (s, e) =>
             {
                 await Task.Delay(3000);
                 panelMouseMove.Enabled = true;
             };
-
             //panel copy MainForm move
             panelMouseMove_3.MouseEnter += (s, e) =>
             {
                 panelMouseMove_3.Enabled = false;
             };
-
             panelMouseMove_3.MouseLeave += async (s, e) =>
             {
                 await Task.Delay(3000);
@@ -100,12 +119,15 @@ namespace Clicker
             };
 
             //notifyIcon - contextMenuStrip
+            contextMenuStrip.Opening += (s, e) =>
+            {
+                ButtonOff();
+            };
             closingToolStripMenuItem.Click += (s, e) =>
             {
                 SaveSettings();
                 Application.Exit();
             };
-
             defaultToolStripMenuItem.Click += (s, e) =>
             {
                 SaveSettings();
@@ -115,21 +137,16 @@ namespace Clicker
                 timer.Stop();
                 Hide();
 
-                MainForm mainform = new MainForm();
-                mainform.Show(this);
-                mainform.Location = new Point(Properties.Settings.Default.MouseX, Properties.Settings.Default.MouseY);
+                var mainForm = new MainForm();
+                mainForm.Show(this);
+                mainForm.Location = new Point(Properties.Settings.Default.MouseX, Properties.Settings.Default.MouseY);
             };
-
             helpToolStripMenuItem.Click += (s, e) =>
             {
-                FormHelp formhelp = new FormHelp();
-                timer.Stop();
-                buttonDetector.BackColor = Color.Empty;
-                buttonDetector.Text = "Off";
-                formhelp.Show();
+                ButtonOff();
+                var formHelp = new FormHelp();
+                formHelp.Show();
             };
-
-
             resetToolStripMenuItem.Click += (s, e) =>
             {
                 Properties.Settings.Default.Defbool = true;
@@ -138,43 +155,34 @@ namespace Clicker
                 MessageBox.Show("restart application!");
                 Application.Exit();
             };
-
             contextMenuStrip.MouseEnter += (s, e) =>
-            {
-                timer.Stop();
+            {  
                 if (buttonDetector.Text == "On")
-                {
-                    buttonDetector.BackColor = Color.Empty;
-                    buttonDetector.Text = "Off";
-                }
+                    ButtonOff();
             };
 
             //timer
-            timer.Tick += async (s, e) =>
+            timer.Tick += (s, e) =>
             {
-                await Task.Run(() => {
-                    mouse_event(0x0002, 1200, 1200, 0, 0);
-                    Thread.Sleep(tc);
-                    mouse_event(0x0004, 1200, 1200, 0, 0);
-                });
+                mouse_event(0x0002, 1200, 1200, 0, 0);
+                Thread.Sleep(timeClick);
+                mouse_event(0x0004, 1200, 1200, 0, 0);
             };
 
         }
 
+        #endregion
+
         void KBDHook_KeyDown(Hooks.LLKHEventArgs e) // keyboard hook
         {
-            tc = int.Parse(textBoxTimeClick.Text);
+            timeClick = int.Parse(textBoxTimeClick.Text);
             if (e.Keys.ToString() == textBoxStopKey.Text.ToString().ToUpper())
             {
-                timer.Stop();
-                buttonDetector.BackColor = Color.Empty;
-                buttonDetector.Text = "Off";
+                ButtonOff();
             }
             else if (e.Keys.ToString() == textBoxStartKey.Text.ToString().ToUpper())
-            {
-                timer.Start();
-                buttonDetector.BackColor = Color.DarkRed;
-                buttonDetector.Text = "On";
+            { 
+                ButtonOn();
             }
             if (e.Keys.ToString() == "Oemplus")
             {
@@ -182,19 +190,21 @@ namespace Clicker
                 textBoxPositionMouseY.Text = MY.ToString();
             }                 
             labelKeyboardHook.Text = e.Keys.ToString();
+            SaveSettings();
         }
 
         void SaveSettings()
         {
-            Properties.Settings.Default.MouseX = int.Parse(textBoxPositionMouseX.Text);
-            Properties.Settings.Default.MouseY = int.Parse(textBoxPositionMouseY.Text);
-            Properties.Settings.Default.TimeClick = int.Parse(textBoxTimeClick.Text);
-            Properties.Settings.Default.KeyStart = textBoxStartKey.Text.ToUpper();
-            Properties.Settings.Default.KeyStop = textBoxStopKey.Text.ToUpper();
+            Properties.Settings.Default.MouseX = Convert.ToInt32(textBoxPositionMouseX.Text);
+            Properties.Settings.Default.MouseY = Convert.ToInt32(textBoxPositionMouseY.Text);
+            Properties.Settings.Default.TimeClick = Convert.ToInt32(textBoxTimeClick.Text);
+            Properties.Settings.Default.KeyStart = (Keys)Enum.Parse(typeof(Keys), textBoxStartKey.Text.ToUpper());
+            Properties.Settings.Default.KeyStop = (Keys)Enum.Parse(typeof(Keys), textBoxStopKey.Text.ToUpper());
             Properties.Settings.Default.Save();
         }
 
-        // mouse hook
+        #region mouse hook
+
         private void Subcsride(IKeyboardMouseEvents events) 
         {
             m_Events = events;
@@ -222,7 +232,10 @@ namespace Clicker
             Subcsride(Hook.GlobalEvents());
         }
 
-        //form
+        #endregion
+
+        #region form
+
         private void FormAdvanced_MouseDown(object sender, MouseEventArgs e)
         {
             base.Capture = false;
@@ -252,6 +265,30 @@ namespace Clicker
                 timer.Start();
         }
 
-        
+        private void textBox_TextChanged(object sender, EventArgs e)
+        {
+            var tb = (TextBox)sender;
+            if (Regex.IsMatch(tb.Text, "[^0-9]"))
+            {
+                tb.Text = tb.Text.Remove(tb.Text.Length - 1);
+                tb.SelectionStart = tb.Text.Length; 
+            }
+        }
+
+        public void ButtonOn()
+        {
+            buttonDetector.BackColor = Color.DarkRed;
+            buttonDetector.Text = "On";
+            timer.Start();
+        }
+
+        public void ButtonOff() 
+        {   
+            buttonDetector.BackColor = Color.Empty;
+            buttonDetector.Text = "Off";
+            timer.Stop();
+        }
+
+        #endregion
     }
 }

@@ -12,7 +12,7 @@ namespace Clicker.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.12.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -86,9 +86,9 @@ namespace Clicker.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("J")]
-        public string KeyStart {
+        public global::System.Windows.Forms.Keys KeyStart {
             get {
-                return ((string)(this["KeyStart"]));
+                return ((global::System.Windows.Forms.Keys)(this["KeyStart"]));
             }
             set {
                 this["KeyStart"] = value;
@@ -98,9 +98,9 @@ namespace Clicker.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("T")]
-        public string KeyStop {
+        public global::System.Windows.Forms.Keys KeyStop {
             get {
-                return ((string)(this["KeyStop"]));
+                return ((global::System.Windows.Forms.Keys)(this["KeyStop"]));
             }
             set {
                 this["KeyStop"] = value;

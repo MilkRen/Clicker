@@ -160,6 +160,7 @@
             this.textBoxPositionMouseX.Name = "textBoxPositionMouseX";
             this.textBoxPositionMouseX.Size = new System.Drawing.Size(100, 22);
             this.textBoxPositionMouseX.TabIndex = 8;
+            this.textBoxPositionMouseX.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // labelKeyboardHook
             // 
@@ -200,6 +201,7 @@
             this.textBoxPositionMouseY.Name = "textBoxPositionMouseY";
             this.textBoxPositionMouseY.Size = new System.Drawing.Size(100, 22);
             this.textBoxPositionMouseY.TabIndex = 11;
+            this.textBoxPositionMouseY.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // labelTimeClick
             // 
@@ -218,6 +220,7 @@
             this.textBoxTimeClick.Name = "textBoxTimeClick";
             this.textBoxTimeClick.Size = new System.Drawing.Size(100, 22);
             this.textBoxTimeClick.TabIndex = 13;
+            this.textBoxTimeClick.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // panelMouseMove
             // 
